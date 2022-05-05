@@ -1,0 +1,29 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+    color: white;
+    font-size: 30px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 500px;
+    width: 100%
+}
+
+div {
+    width: 100%;
+    height: 80px;
+    background-color: #0A146E;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+}

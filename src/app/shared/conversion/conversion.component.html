@@ -1,0 +1,70 @@
+<div class="main">
+    <form class="conversion-form" [formGroup]="form">
+        <div class="conversion__section" formGroupName="from">
+            <mat-form-field class="conversion_full-width" appearance="fill">
+                <mat-label>Enter value</mat-label>
+                <input 
+                    type="number" 
+                    min="0" 
+                    matInput 
+                    formControlName="value" 
+                    (input)="onInput('from')"
+                    autocomplete="off"
+                >
+                <mat-error *ngIf="isNumbersError('from')">
+                    Number is less than 0.01
+                </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+                <mat-label>Select currency</mat-label>
+                <mat-select 
+                    formControlName="currency" 
+                    (selectionChange)="onSelectionChange('from', $event)" 
+                >
+                    <mat-option 
+                        *ngFor="let currency of currencies" 
+                        [value]="currency.value" 
+                        [style]="getStyleForOption(currency.selected)"
+                    >
+                        {{currency.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="conversion__section" formGroupName="to">
+            <mat-form-field class="conversion_full-width" appearance="fill">
+                <mat-label>Enter value</mat-label>
+                <input 
+                    type="number" 
+                    min="0" 
+                    matInput 
+                    formControlName="value" 
+                    (input)="onInput('to')"
+                    autocomplete="off"
+                >
+                <mat-error *ngIf="isNumbersError('to')">
+                    Number is less than 0.01
+                </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+                <mat-label>Select currency</mat-label>
+                <mat-select 
+                    formControlName="currency" 
+                    (selectionChange)="onSelectionChange('to', $event)"
+                >
+                    <mat-option 
+                        *ngFor="let currency of currencies" 
+                        [value]="currency.value" 
+                        [style]="getStyleForOption(currency.selected)"
+                    >
+                        {{currency.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+<app-preloader *ngIf="isPreloaderShowed"></app-preloader>
